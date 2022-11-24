@@ -55,3 +55,19 @@ def shop(request):
     return render(request, 'core/shop.html', context)
 
 
+
+
+def BlogView(request):
+    return render(request, 'nav/blog.html')
+
+
+def CareerView(request):
+    return render(request, 'nav/career.html')
+
+
+def AboutView(request):
+    return render(request, 'nav/about.html')
+
+
+def ContactView(request):
+    return render(request, 'nav/contact.html')

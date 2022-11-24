@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'cart',
     'core',
     'product',
+    'api',
     #outsider qpps
 
 ]

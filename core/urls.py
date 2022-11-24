@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .views import frontpage, shop, signup
+from .views import frontpage, shop, signup, BlogView, ContactView, CareerView, AboutView
 from django.contrib.auth import views
 from django.urls import path
 from cart.views import add_to_cart, cart, checkout
@@ -15,6 +15,10 @@ urlpatterns = [
     path('login/', views.LoginView.as_view(template_name='core/login.html'), name='login'),
     path('cart/checkout/', checkout, name='checkout'),
     path('cart/', cart, name='cart'),
+    path('blog/', BlogView, name='blog'),
+    path('about/', AboutView, name='about'),
+    path('contact/', ContactView, name='contact'),
+    path('career/', CareerView, name='career'),
 ]
 
 

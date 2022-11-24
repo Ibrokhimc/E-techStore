@@ -1,0 +1,67 @@
+{% extends 'core/base.html' %}
+{% block title %}SingUp{% endblock %}
+
+
+{% block content %}
+  <div class="max-w-lg mx-auto flex flex-wrap items-start py-6 p-6 xl:px-0 ">
+       <h1 class="p-5 mx-auto text-4xl text-gray-900">Create Your Account</h1>
+      <div class="w-full bg-gray-200 p-6 rounded-xl">
+        <h1 class="mb-6 text-2xl">
+         Create account
+        </h1>
+          <form action="." method="post">
+            {% csrf_token %}
+             <div>
+              <label for="">Username</label>
+              <input type="text" name="username" class="w-full mt-2 py-3 px-4 bg-white rounded-xl border-orange-400 border-1">
+            </div>
+            <div>
+              <label for="">First name</label>
+              <input type="text" name="first_name" class="w-full mt-2 py-3 px-4 bg-white rounded-xl border-orange-400 border-1">
+            </div>
+            <div>
+              <label for="">Last name</label>
+              <input type="text" name="last_name" class="w-full mt-2 py-3 px-4 bg-white rounded-xl border-orange-400 border-1">
+            </div>
+            <div>
+              <label for="">E-mail</label>
+              <input type="email" name="email" class="w-full mt-2 py-3 px-4 bg-white rounded-xl border-orange-400 border-1">
+            </div>
+            <div>
+              <label for="">Password</label>
+              <input type="password" name="password1" class="w-full mt-2 py-3 px-4 bg-white rounded-xl border-orange-400 border-1">
+            </div>
+            <div>
+              <label for="">Repeat password</label>
+              <input type="password" name="password2" class="w-full mt-2 py-3 px-4 bg-white rounded-xl border-orange-400 border-1">
+            </div>
+              {% if form.errors %}
+                  {% for field in form %}
+                      {% for error in field.errors %}
+                     <div class=" p-6 mt-3 text-red-900 bg-orange-100 rounded-xl">
+                         <p>{{ error|escape }}</p>
+                     </div>
+                       {% endfor %}
+                  {% endfor %}
+
+                  {% for error in form.non_field_errors %}
+                        <div class=" p-6 mt-3 text-red-900 bg-orange-100 rounded-xl">
+                          <p>{{ error|escape }}</p>
+                         </div>
+                  {% endfor %}
+
+              {% endif %}
+
+             <div class="">
+               <button type="submit" class="py-3 px-9 mt-3 rounded-xl text-white bg-orange-500 hover:bg-orange-800">Continue</button>
+             </div>
+
+          </form>
+
+
+          <p class="py-9 px-2 text-gray-600 ">Already have an account? <a class="text-blue-400" href="{% url 'login' %}">Sign in</a></p>
+
+      </div>
+  </div>
+
+{% endblock %}

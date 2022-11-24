@@ -1,0 +1,63 @@
+{% extends 'core/base.html' %}
+{% block title %}Cart{% endblock %}
+
+{% block content %}
+<di class="max-w-6xl mx-auto flex flex-wrap items-start py-6 mt-3 xl:px-0">
+
+  <div class="product w-full lg:w-3/4">
+    {% for item in cart %}
+   <div class="Product mb-8 flex pr-5">
+     <a href="" class="w-1/4">
+       <img src="{{ item.product.get_thumbnail }}" class="hover:shadow-lg rounded-xl" alt="">
+     </a>
+     <div class="w-3/4 pl-6">
+       <div class="flex justify-between ">
+         <a href="" class="text-lg">{{ item.product.name }}</a>
+         <span class="mb-6 pt-1 text-scartlet">{{ item.total_price }}$</span>
+       </div>
+
+       <hr>
+
+       <div class="quantity mt-6 flex items-center space-x-4">
+         <a href="" class="p-3 bg-gray-200">-</a>
+         <span>{{ item.quantity }}</span>
+         <a href="" class="p-3 bg-gray-200">+</a>
+       </div>
+
+     </div>
+   </div>
+    {% endfor %}
+
+  </div>
+
+   <div class="summary w-full w-1/4 p-6 bg-sky-100 rounded-xl mt-3">
+     <h2 class="uppercase text-lg mb-5"><strong>Order Summary </strong></h2>
+
+     <div class="mb-6 flex justify-between">
+       <span class="font-semibold text-orange-800">Order total:</span>
+       <span>$99</span>
+
+
+     </div>
+      <p class="mt-1">Shipping & Handling</p>
+       <hr>
+       <p class="mt-1"> Total before tax</p>
+     <hr>
+       <p class="mt-1">Shipping & Handling</p>
+
+     <a href="{% url 'checkout' %}" class="inline-block mt-3  px-8 py-3 rounded-xl bg-orange-700 text-white">Checkouts</a>
+
+
+      <div class="rounded-xl p-2 mt-3 ">
+          <hr>
+
+         <div class="text-blue-700"><a  href="https://www.amazon.com/gp/help/customer/display.html/ref=chk_help_shipcosts_pri?ie=UTF8&nodeId=468520">How are shipping costs calculated?</a></div>
+       </div>
+   </div>
+
+
+
+
+</div>
+
+{% endblock  %}

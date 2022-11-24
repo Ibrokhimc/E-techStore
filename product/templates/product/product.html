@@ -1,0 +1,38 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto flex flex-wrap py-6 px-6 xl:px-0">
+    <div class="images w-full mb-6 lg:w-3/5">
+        <img src="{{ product.image.url }}" class="rounded-xl" alt="">
+        <div class="mx-auto p-3 bg-white mt-4 rounded-xl">
+
+            <p class="mt-1 text-gray-400"> This item cannot be shipped to your selected delivery location. Please choose a different delivery location.</p>
+            <p class="mt-1 text-orange-700">Deliver to Uzbekistan</p>
+
+            <a href=""
+           class="mt-6 inline-block px-40 py-4 rounded-xl bg-orange-500 text-white hover:bg-orange-700"
+           hx-get="{% url 'add_to_cart' product.id %}"
+           hx-target="#menu-cart-button"
+           hx-swap="outerHTML"
+        >
+            Add to card
+        </a>
+            <a href="{% url 'cart' %}"  class="mt-6 inline-block  px-20 py-4 rounded-xl bg-gray-700 text-white hover:bg-orange-700">Show list</a>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="information w-full lg:w-2/5 lg:p-6">
+        <h1 class="text-2xl">{{ product.name.title }}</h1>
+
+        <p class="mt-2 text-gray-400"><b>Price:</b> {{ product.get_display_price }}$</p>
+
+        <p class="mt-6 text-gray-700">{{ product.description }}</p>
+
+    </div>
+</div>
+
+{% endblock %}
